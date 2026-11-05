@@ -1,0 +1,74 @@
+
+pipeline {
+    agent any
+
+    options {
+        timestamps()
+        skipDefaultCheckout(true)
+    }
+
+    environment {
+        EXP_DIR = 'Experiment-06-CI-CD-Pipeline'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Stage 1: Checking out source code'
+                checkout scm
+                echo 'Source code checkout completed'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Stage 2: Building application'
+
+                dir("${EXP_DIR}") {
+                    sh 'bash build.sh'
+                }
+
+                echo 'Build completed successfully'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Stage 3: Running automated tests'
+
+                dir("${EXP_DIR}") {
+                    sh 'python3 -m unittest -v test_app'
+                }
+
+                echo 'All tests passed'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Stage 4: Deploying application'
+
+                dir("${EXP_DIR}") {
+                    sh 'bash deploy.sh'
+                }
+
+                echo 'Deployment completed successfully'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'CI/CD PIPELINE SUCCESSFUL'
+        }
+
+        failure {
+            echo 'CI/CD PIPELINE FAILED'
+        }
+
+        always {
+            echo 'Pipeline execution finished'
+        }
+    }
+}
