@@ -1,0 +1,62 @@
+Step A — Test the Go application locally
+From the Experiment 10 folder:
+
+go test -v ./...
+go run .
+
+
+curl http://localhost:8080/
+curl http://localhost:8080/health
+curl http://localhost:8080/metrics
+
+Step B — Test the Docker image
+
+docker build -t devops-go-app:local .
+
+docker run --rm \
+  -p 127.0.0.1:8080:8080 \
+  devops-go-app:local
+
+#Step C — Prepare Jenkins and Docker Hub
+Create a Docker Hub repository named devops-go-app.
+
+In Jenkins, configure a credential with ID dockerhub-credentials and assign the devops-k8s label to a trusted agent with Go, Docker, Git, and kubectl installed.
+
+Configure Kubernetes credentials for that agent. Avoid exposing the Docker socket or Kubernetes administrator credentials to untrusted jobs.
+
+
+
+Step D — Configure Jenkins Pipeline
+Job name	End-to-End-DevOps
+Type	Pipeline
+Definition	Pipeline script from SCM
+SCM	Git
+Branch	*/main
+Script Path	Experiment-10-End-to-End-DevOps/Jenkinsfile
+DOCKERHUB_USER	Your Docker Hub username
+
+
+Step E — Install monitoring
+After the Jenkins deployment succeeds, run:
+
+chmod +x monitoring_commands.sh
+./monitoring_commands.sh
+
+
+Step F — Access application and monitoring
+Use separate terminals for port forwarding:
+
+# Application
+kubectl port-forward \
+  -n devops-lab \
+  svc/devops-go-service 8080:80
+
+# Grafana
+kubectl port-forward \
+  -n monitoring \
+  svc/monitoring-grafana 3000:80
+
+# Prometheus
+kubectl port-forward \
+  -n monitoring \
+  svc/monitoring-kube-prometheus-prometheus 9090:9090
