@@ -8,3 +8,35 @@ Docker Compose	Compose v2
 Prometheus	Containerized
 Grafana	Containerized
 Ports	5000, 9090, 3000
+
+Step A — Set Grafana administrator password
+In Linux, macOS, or WSL Bash:
+
+
+read -rsp "Grafana admin password: " GRAFANA_ADMIN_PASSWORD
+echo
+export GRAFANA_ADMIN_PASSWORD
+
+Step B — Start services
+From the Experiment 9 folder:
+
+
+docker compose config
+docker compose up -d --build
+docker compose ps
+
+
+Step C — Generate traffic and verify metrics
+
+curl http://localhost:5000/
+curl http://localhost:5000/health
+curl http://localhost:5000/metrics
+
+# Simulate an error
+curl -i http://localhost:5000/error
+
+# Verify monitoring services
+curl http://localhost:9090/-/healthy
+curl http://localhost:3000/api/health
+
+
