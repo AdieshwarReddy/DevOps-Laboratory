@@ -1,0 +1,32 @@
+
+========================================
+EXPERIMENT 1: DEVOPS ENVIRONMENT SETUP
+========================================
+
+STEP 1: Checking Operating System
+Operating System: Ubuntu 24.04 LTS
+
+STEP 2: Updating Package List
+Package lists updated successfully.
+
+STEP 3: Installing DevOps Tools
+Git, curl, wget, Python3 and pip installed.
+
+STEP 4: Checking Git
+git version 2.x.x
+
+STEP 5: Checking Python
+Python 3.x.x
+
+STEP 6: Checking curl
+curl 8.x.x
+
+STEP 7: Checking Docker
+Docker version 2x.x.x
+Docker daemon is running.
+
+========================================
+DEVOPS ENVIRONMENT CHECK COMPLETED
+========================================
+Basic DevOps tools are ready.
+Review Docker status above.
