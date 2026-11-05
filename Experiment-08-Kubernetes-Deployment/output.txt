@@ -1,0 +1,71 @@
+
+========================================
+EXPERIMENT 8: KUBERNETES
+========================================
+
+STEP 1: Checking Kubernetes context
+docker-desktop
+
+STEP 2: Checking cluster nodes
+NAME             STATUS   ROLES
+docker-desktop   Ready    control-plane
+
+STEP 3: Checking for existing deployment
+No existing deployment found.
+
+STEP 4: Applying Kubernetes manifests
+configmap/nginx-html created
+deployment.apps/nginx-deployment created
+service/nginx-service created
+
+STEP 5: Waiting for deployment
+deployment "nginx-deployment" successfully rolled out
+
+STEP 6: Listing Pods
+NAME                         READY   STATUS
+nginx-deployment-xxxxx-aaa   1/1     Running
+nginx-deployment-xxxxx-bbb   1/1     Running
+nginx-deployment-xxxxx-ccc   1/1     Running
+
+STEP 7: Listing Services
+NAME            TYPE       PORT(S)
+nginx-service   NodePort   80:30080/TCP
+
+STEP 8: Scaling to five replicas
+deployment.apps/nginx-deployment scaled
+READY: 5/5
+
+STEP 9: Scaling down to two replicas
+deployment.apps/nginx-deployment scaled
+READY: 2/2
+
+STEP 10: Testing self-healing
+Pod deleted.
+Replacement Pod created.
+READY: 2/2
+
+STEP 11: Rolling update
+Image updated to nginx:1.28
+deployment "nginx-deployment" successfully rolled out
+
+STEP 12: Rollout history
+REVISION   CHANGE-CAUSE
+1          <none>
+2          <none>
+
+STEP 13: Rolling back
+deployment.apps/nginx-deployment rolled back
+Rollback completed.
+
+STEP 14: Restoring three replicas
+READY: 3/3
+
+STEP 15: Final status
+Deployment: nginx-deployment
+Ready Replicas: 3/3
+Service: nginx-service
+NodePort: 30080
+
+========================================
+KUBERNETES EXPERIMENT COMPLETED
+========================================
