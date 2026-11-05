@@ -1,0 +1,70 @@
+
+========================================
+EXPERIMENT 5: JENKINS INSTALLATION
+========================================
+
+STEP 1: Updating package index
+Package lists updated.
+
+STEP 2: Installing Java and utilities
+Java and required utilities installed.
+
+STEP 3: Verifying Java
+openjdk version "21.x.x"
+
+STEP 4: Adding Jenkins signing key
+Signing key downloaded.
+
+STEP 5: Adding Jenkins LTS repository
+Repository configured.
+
+STEP 6: Installing Jenkins
+Jenkins package installed.
+
+STEP 7: Enabling and starting Jenkins
+Jenkins service enabled.
+
+STEP 8: Checking Jenkins service
+Jenkins service is active.
+
+STEP 9: Checking Jenkins port
+Port 8080 is listening.
+
+========================================
+JENKINS INSTALLATION CHECK COMPLETED
+========================================
+
+JENKINS WEB SETUP (MANUAL)
+
+Jenkins URL: http://localhost:8080
+Unlock Jenkins: Expected
+Suggested plugins: Expected
+Administrator creation: Expected
+Setup completion: Expected
+
+========================================
+FREESTYLE JOB - SAMPLE CONSOLE OUTPUT
+========================================
+
+Jenkins Freestyle Job Started
+
+Step 1: Display Build Information
+Job Name: DevOps-Experiment-05
+Build Number: 1
+
+Step 2: Display System Information
+Linux
+
+Step 3: Display Current Directory
+/var/lib/jenkins/workspace/DevOps-Experiment-05
+
+Step 4: Execute Automation Task
+Building sample application...
+Running sample tests...
+Sample automation steps completed.
+
+========================================
+BUILD COMPLETED SUCCESSFULLY
+========================================
+
+Finished: SUCCESS
