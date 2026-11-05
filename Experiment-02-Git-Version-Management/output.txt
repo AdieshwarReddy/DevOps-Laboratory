@@ -1,0 +1,55 @@
+
+========================================
+EXPERIMENT 2: GIT VERSION MANAGEMENT
+========================================
+
+STEP 1: Repository initialized
+## main
+
+STEP 2: File created
+?? main.py
+
+STEP 3: File staged
+A  main.py
+
+STEP 4: Initial commit completed
+
+STEP 5: Modified file
+ M main.py
+
+STEP 6: View changes
+diff --git a/main.py b/main.py
+...
+- print("Git Version Management - Version 1")
++ print("Git Version Management - Version 2")
++ print("Version control helps track code changes.")
+
+STEP 7: Second commit completed
+
+STEP 8: Feature branch committed
+
+STEP 9: Feature branch merged
+
+STEP 10: Commit history
+*   <hash> Merge greeting feature
+|\
+| * <hash> Add greeting feature
+|/
+* <hash> Update application to version 2
+* <hash> Initial commit: version 1
+
+STEP 11: Execute final application
+Welcome to DevOps Laboratory
+Git Version Management - Version 2
+Version control helps track code changes.
+Feature: Welcome to Git and GitHub!
+
+STEP 12: Final repository status
+## main
+
+Demo repository: /tmp/tmp-example
+Remote GitHub operations require manual setup.
+
+========================================
+GIT VERSION MANAGEMENT COMPLETED
+========================================
