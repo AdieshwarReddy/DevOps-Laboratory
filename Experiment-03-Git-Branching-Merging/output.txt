@@ -1,0 +1,54 @@
+
+========================================
+EXPERIMENT 3: GIT BRANCHING AND MERGING
+========================================
+
+STEP 1: Git repository initialized
+STEP 2: Initial commit created
+STEP 3: Feature branch created and committed
+STEP 4: Feature branch merged into main
+STEP 5: Conflict branch created
+STEP 6: Conflicting main branch change committed
+
+STEP 7: Attempting conflicting merge
+Auto-merging message.txt
+CONFLICT (content): Merge conflict in message.txt
+Automatic merge failed; fix conflicts and then commit the result.
+Expected merge conflict detected.
+
+STEP 8: Conflict markers
+<<<<<<< HEAD
+Application Status: Updated by main branch
+=======
+Application Status: Updated by feature branch
+>>>>>>> conflict-demo
+
+STEP 9: Conflict resolved and committed
+
+STEP 10: Final file content
+Application Status: Updated by main and feature branches
+
+STEP 11: Branch list
+  conflict-demo
+  feature-update
+* main
+
+STEP 12: Commit history
+*   <hash> Resolve merge conflict
+|\
+| * <hash> Feature branch status update
+* | <hash> Main branch status update
+|/
+* <hash> Add initial status
+* <hash> Update feature branch
+* <hash> Initial commit
+
+STEP 13: Final repository status
+## main
+
+Demonstration repository: /tmp/tmp-example
+GitHub push requires a remote repository.
+
+========================================
+EXPERIMENT 3 COMPLETED SUCCESSFULLY
+========================================
