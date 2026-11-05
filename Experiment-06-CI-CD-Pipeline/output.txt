@@ -1,0 +1,98 @@
+
+========================================
+DEVOPS LABORATORY - EXPERIMENT 6
+========================================
+
+PIPELINE: CI-CD-Pipeline
+BUILD NUMBER: 1
+
+----------------------------------------
+STAGE 1: CHECKOUT
+----------------------------------------
+
+Checking out source code
+Git repository checkout completed
+Source code checkout completed
+
+Stage Result: SUCCESS
+
+----------------------------------------
+STAGE 2: BUILD
+----------------------------------------
+
+BUILD STAGE STARTED
+
+Step 1: Verify Python installation
+Python 3.x.x
+
+Step 2: Validate Python syntax
+Syntax verified: app.py
+Syntax verified: test_app.py
+
+Step 3: Execute application
+
+====================================
+        DEVOPS LABORATORY
+====================================
+Experiment 6: CI/CD Pipeline
+Welcome to DevOps CI/CD Pipeline
+Addition Result: 30
+====================================
+Application executed successfully.
+====================================
+
+BUILD COMPLETED SUCCESSFULLY
+
+Stage Result: SUCCESS
+
+----------------------------------------
+STAGE 3: TEST
+----------------------------------------
+
+Running automated tests
+
+test_addition ... ok
+test_large_numbers ... ok
+test_negative_numbers ... ok
+test_zero ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests
+
+OK
+
+All tests passed
+
+Stage Result: SUCCESS
+
+----------------------------------------
+STAGE 4: DEPLOY
+----------------------------------------
+
+DEPLOY STAGE STARTED
+
+Step 1: Creating deployment directory
+
+Step 2: Copying application
+
+Step 3: Verifying deployed file
+Deployment file verified.
+
+Step 4: Running deployed application
+
+Experiment 6: CI/CD Pipeline
+Welcome to DevOps CI/CD Pipeline
+Addition Result: 30
+
+DEPLOYMENT COMPLETED SUCCESSFULLY
+
+Stage Result: SUCCESS
+
+----------------------------------------
+FINAL PIPELINE RESULT
+----------------------------------------
+
+CI/CD PIPELINE SUCCESSFUL
+Pipeline execution finished
+
+Finished: SUCCESS
