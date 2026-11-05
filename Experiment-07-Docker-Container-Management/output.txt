@@ -1,0 +1,69 @@
+
+========================================
+EXPERIMENT 7: DOCKER MANAGEMENT
+========================================
+
+STEP 1: Docker Version
+Docker version <installed-version>
+
+STEP 2: Building Python image
+Image built successfully:
+python-docker-app:v1
+
+STEP 3: Running Python container
+
+====================================
+        DEVOPS LABORATORY
+====================================
+Hello from Docker Container!
+Docker image and container management experiment
+====================================
+Python container executed successfully.
+====================================
+
+STEP 4: Python container logs
+Hello from Docker Container!
+Docker image and container management experiment
+
+STEP 5: Building Flask image
+Image built successfully:
+flask-docker-app:v1
+
+STEP 6: Starting Flask container
+Container ID: <container-id>
+
+STEP 7: Checking running containers
+NAME              STATUS       PORTS
+exp7-flask-demo   Up           127.0.0.1:5000->5000/tcp
+
+STEP 8: Testing Flask application
+Hello from Docker Flask Container!
+
+STEP 9: Stopping Flask container
+exp7-flask-demo
+
+STEP 10: Starting Flask container
+exp7-flask-demo
+
+STEP 11: Restarting Flask container
+exp7-flask-demo
+
+STEP 12: Container logs
+Flask application started on port 5000
+
+STEP 13: Container inspection
+/exp7-flask-demo | running
+
+STEP 14: Available Docker images
+python-docker-app:v1
+flask-docker-app:v1
+
+STEP 15: Container cleanup
+Demonstration containers removed.
+
+STEP 16: Image cleanup
+Images retained for later use.
+
+========================================
+DOCKER EXPERIMENT COMPLETED
+========================================
