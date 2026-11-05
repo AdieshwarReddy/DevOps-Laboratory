@@ -1,0 +1,11 @@
+
+python3 main.py
+python3 -m unittest -v
+
+
+
+bash /path/to/Experiment-04-GitHub-Collaboration/git_commands.sh
+
+
+#GitHub commit message
+feat: add experiment 4 GitHub collaboration with pull requests and code reviews
