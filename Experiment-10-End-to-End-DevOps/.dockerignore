@@ -1,0 +1,13 @@
+
+.git
+.gitignore
+Jenkinsfile
+README.md
+output.txt
+main_test.go
+monitoring_commands.sh
+k8s/
+monitoring/
+*.log
+.env
+.env.*
