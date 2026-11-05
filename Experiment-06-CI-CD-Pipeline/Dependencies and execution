@@ -1,0 +1,9 @@
+Component	Requirement
+Operating system	Ubuntu 22.04 / 24.04 LTS
+Jenkins	Installed and running
+Java	Compatible with installed Jenkins LTS
+Git	Installed
+Python	Python 3
+Shell	Bash
+Jenkins plugins	Pipeline, Git
+Python packages	None
