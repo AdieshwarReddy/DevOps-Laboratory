@@ -1,0 +1,48 @@
+Component	Requirement
+Docker	Docker Desktop
+Kubernetes	Local cluster enabled
+kubectl	Compatible with cluster version
+Container image	Nginx 1.27 initially
+YAML manifests	Deployment, Service, ConfigMap
+Bash	For automation script
+Browser	For NodePort verification
+Python packages	None
+
+Option A — Execute manually
+Run from the Experiment 8 folder:
+
+# Check Kubernetes
+kubectl config current-context
+kubectl get nodes
+
+# Create resources
+kubectl apply -f configmap.yaml
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+# Verify
+kubectl rollout status deployment/nginx-deployment
+kubectl get deployments
+kubectl get pods
+kubectl get services
+
+# Scale up
+kubectl scale deployment nginx-deployment --replicas=5
+
+# Scale down
+kubectl scale deployment nginx-deployment --replicas=2
+
+# Rolling update
+kubectl set image deployment/nginx-deployment nginx=nginx:1.28
+kubectl rollout status deployment/nginx-deployment
+
+# Rollback
+kubectl rollout undo deployment/nginx-deployment
+kubectl rollout status deployment/nginx-deployment
+
+Option B — Execute automation script
+On Ubuntu, WSL, or Git Bash with access to Docker Desktop's Kubernetes context:
+
+
+chmod +x kubernetes_commands.sh
+./kubernetes_commands.sh
