@@ -1,1 +1,10 @@
 
+Component	Requirement
+Python	3.8+ locally; 3.11 in container
+Flask	3.x
+prometheus-client	Python metrics library
+Docker	Docker Engine / Desktop
+Docker Compose	Compose v2
+Prometheus	Containerized
+Grafana	Containerized
+Ports	5000, 9090, 3000
