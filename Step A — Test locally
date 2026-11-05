@@ -1,0 +1,8 @@
+
+python3 app.py
+python3 -m unittest -v test_app
+
+bash build.sh
+bash deploy.sh
+
+python3 deployment/app.py
