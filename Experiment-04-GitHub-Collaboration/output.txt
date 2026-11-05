@@ -1,0 +1,62 @@
+
+========================================
+EXPERIMENT 4: GITHUB COLLABORATION
+========================================
+
+STEP 1: Checking Git repository
+## main
+
+STEP 2: Creating feature branch
+Switched to a new branch 'feature-greeting'
+
+STEP 3: Running initial tests
+test_greeting ... ok
+
+----------------------------------------------------------------------
+Ran 1 test
+
+OK
+
+STEP 4: Feature commit created
+[feature-greeting <commit-hash>]
+Add greeting application and unit test
+
+STEP 5: Push feature branch
+git push -u origin feature-greeting
+
+STEP 6: Create Pull Request
+PR Title: Add greeting application with unit tests
+Base: main
+Compare: feature-greeting
+
+STEP 7: Perform Code Review
+Review status: Changes requested
+
+Suggested improvement:
+Handle leading/trailing whitespace and empty names.
+
+Revision committed:
+Improve greeting validation after review
+
+Final test results:
+test_empty_name ... ok
+test_normal_name ... ok
+test_whitespace_handling ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests
+
+OK
+
+STEP 8: Merge Approved PR
+Expected status: Approved and merged
+
+Developer 2:
+git pull origin main
+
+Expected result:
+Already up to date, or updated files downloaded.
+
+========================================
+EXPERIMENT 4 COMPLETED
+========================================
