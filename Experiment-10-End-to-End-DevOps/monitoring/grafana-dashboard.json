@@ -1,0 +1,100 @@
+
+{
+  "uid": "devops-exp10",
+  "title": "DevOps End-to-End Monitoring",
+  "tags": ["devops", "kubernetes", "go"],
+  "timezone": "browser",
+  "schemaVersion": 41,
+  "version": 1,
+  "refresh": "10s",
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Total Requests",
+      "gridPos": {
+        "h": 8, "w": 12, "x": 0, "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(app_requests_total)"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Total Errors",
+      "gridPos": {
+        "h": 8, "w": 12, "x": 12, "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(app_errors_total)"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Requests Per Second",
+      "gridPos": {
+        "h": 8, "w": 12, "x": 0, "y": 8
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "sum(rate(app_requests_total[5m]))",
+          "legendFormat": "Requests/sec"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Application Availability",
+      "gridPos": {
+        "h": 8, "w": 12, "x": 12, "y": 8
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "expr": "min(app_up)",
+          "legendFormat": "Application Up"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "min": 0,
+          "max": 1
+        },
+        "overrides": []
+      }
+    }
+  ]
+}
