@@ -1,0 +1,158 @@
+
+pipeline {
+    agent { label 'devops-k8s' }
+
+    options {
+        timestamps()
+        skipDefaultCheckout(true)
+        disableConcurrentBuilds()
+    }
+
+    parameters {
+        string(
+            name: 'DOCKERHUB_USER',
+            defaultValue: '',
+            description: 'Your Docker Hub username'
+        )
+    }
+
+    environment {
+        EXP_DIR = 'Experiment-10-End-to-End-DevOps'
+        APP_NAME = 'devops-go-app'
+        K8S_NAMESPACE = 'devops-lab'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+
+                script {
+                    env.SHORT_SHA = sh(
+                        script: 'git rev-parse --short=7 HEAD',
+                        returnStdout: true
+                    ).trim()
+
+                    env.IMAGE_TAG = "${env.BUILD_NUMBER}-${env.SHORT_SHA}"
+                }
+
+                echo "Git SHA: ${env.SHORT_SHA}"
+                echo "Image tag: ${env.IMAGE_TAG}"
+            }
+        }
+
+        stage('Test') {
+            steps {
+                dir("${EXP_DIR}") {
+                    sh 'go test -v ./...'
+                }
+            }
+        }
+
+        stage('Build & Tag') {
+            steps {
+                script {
+                    if (!params.DOCKERHUB_USER?.trim()) {
+                        error('DOCKERHUB_USER must be provided.')
+                    }
+
+                    env.IMAGE_NAME = "${params.DOCKERHUB_USER}/" +
+                        "${env.APP_NAME}:${env.IMAGE_TAG}"
+                }
+
+                dir("${EXP_DIR}") {
+                    sh '''
+                        docker build -t "$IMAGE_NAME" .
+                    '''
+                }
+
+                echo "Image built: ${env.IMAGE_NAME}"
+            }
+        }
+
+        stage('Push') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockerhub-credentials',
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_TOKEN'
+                    )
+                ]) {
+                    sh '''
+                        set +x
+                        printf '%s' "$DOCKER_TOKEN" |
+                            docker login \
+                              --username "$DOCKER_USER" \
+                              --password-stdin
+
+                        docker push "$IMAGE_NAME"
+                        docker logout
+                    '''
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                dir("${EXP_DIR}") {
+                    sh '''
+                        set -eu
+
+                        kubectl config current-context
+
+                        kubectl create namespace \
+                            "$K8S_NAMESPACE" \
+                            --dry-run=client -o yaml |
+                            kubectl apply -f -
+
+                        kubectl apply -n "$K8S_NAMESPACE" \
+                            -f k8s/deployment.yaml
+
+                        kubectl apply -n "$K8S_NAMESPACE" \
+                            -f k8s/service.yaml
+
+                        kubectl set image \
+                            deployment/devops-go-app \
+                            app="$IMAGE_NAME" \
+                            -n "$K8S_NAMESPACE"
+
+                        kubectl rollout status \
+                            deployment/devops-go-app \
+                            -n "$K8S_NAMESPACE" \
+                            --timeout=300s
+                    '''
+                }
+            }
+        }
+
+        stage('Verify') {
+            steps {
+                sh '''
+                    kubectl get deployments \
+                        -n "$K8S_NAMESPACE"
+
+                    kubectl get pods \
+                        -n "$K8S_NAMESPACE"
+
+                    kubectl get services \
+                        -n "$K8S_NAMESPACE"
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'END-TO-END DEVOPS PIPELINE SUCCESSFUL'
+        }
+
+        failure {
+            echo 'END-TO-END DEVOPS PIPELINE FAILED'
+        }
+
+        always {
+            echo 'Pipeline execution finished'
+        }
+    }
+}
