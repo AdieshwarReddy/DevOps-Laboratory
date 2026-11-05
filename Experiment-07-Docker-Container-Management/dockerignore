@@ -1,0 +1,12 @@
+
+.git
+.gitignore
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+output.txt
+README.md
+docker_commands.sh
