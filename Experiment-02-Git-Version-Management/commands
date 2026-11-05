@@ -1,0 +1,11 @@
+#Execute from the experiment folder in Ubuntu or WSL:
+
+
+chmod +x git_commands.sh
+./git_commands.sh
+
+
+#To run the Python file independently:
+
+
+python3 main.py
