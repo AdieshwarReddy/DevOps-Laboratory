@@ -7,3 +7,33 @@ Python	Python 3
 Shell	Bash
 Jenkins plugins	Pipeline, Git
 Python packages	None
+
+Step A — Test locally
+
+
+python3 app.py
+python3 -m unittest -v test_app
+
+bash build.sh
+bash deploy.sh
+
+python3 deployment/app.py
+
+
+Step B — Push your files to GitHub
+
+
+git add Experiment-06-CI-CD-Pipeline/
+git commit -m "feat: add experiment 6 Jenkins CI CD pipeline"
+git push origin main
+
+
+Step C — Configure Jenkins
+Jenkins Pipeline settings
+Job name	CI-CD-Pipeline
+Job type	Pipeline
+Definition	Pipeline script from SCM
+SCM	Git
+Repository URL	Your DevOps-Laboratory GitHub repository URL
+Branch	*/main
+Script Path	Experiment-06-CI-CD-Pipeline/Jenkinsfile
