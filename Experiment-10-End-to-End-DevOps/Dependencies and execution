@@ -1,0 +1,11 @@
+Tool	Purpose
+Git	Source-code version control
+Go 1.22	Application development and testing
+Jenkins LTS	CI/CD automation
+Docker	Multi-stage image build
+Docker Hub	Image registry
+Kubernetes	Container orchestration
+kubectl	Cluster deployment
+Helm	Monitoring stack installation
+Prometheus	Metrics collection
+Grafana	Monitoring dashboards
