@@ -1,0 +1,20 @@
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: devops-go-monitor
+  namespace: devops-lab
+  labels:
+    release: monitoring
+spec:
+  namespaceSelector:
+    matchNames:
+      - devops-lab
+  selector:
+    matchLabels:
+      app: devops-go-app
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
+      scrapeTimeout: 10s
