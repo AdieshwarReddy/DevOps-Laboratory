@@ -1,0 +1,7 @@
+
+chmod +x install_jenkins.sh
+chmod +x verify_jenkins.sh
+chmod +x freestyle_build.sh
+
+./install_jenkins.sh
+./verify_jenkins.sh
