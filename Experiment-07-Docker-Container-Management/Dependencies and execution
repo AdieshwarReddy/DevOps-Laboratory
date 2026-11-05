@@ -1,0 +1,45 @@
+Component	Requirement
+Docker	Docker Desktop or Docker Engine
+Python base image	python:3.11-slim
+Flask	>=3.0,<4.0
+Bash	Required for automation script
+curl	Recommended for HTTP verification
+Browser	Any modern browser
+Port	Host localhost:5000
+
+#Option A — Run commands manually From the Experiment 7 folder:
+
+
+# Verify Docker
+docker --version
+docker run --rm hello-world
+
+# Build and run Python image
+docker build -t python-docker-app:v1 .
+docker run --name python-demo python-docker-app:v1
+docker logs python-demo
+docker rm python-demo
+
+# Build and run Flask image
+docker build -f Dockerfile.flask -t flask-docker-app:v1 .
+docker run -d --name flask-container \
+  -p 127.0.0.1:5000:5000 flask-docker-app:v1
+
+# Inspect
+docker ps
+docker logs flask-container
+docker inspect flask-container
+
+# Cleanup
+docker stop flask-container
+docker rm flask-container
+
+#Option B — Run the automation script
+
+
+chmod +x docker_commands.sh
+./docker_commands.sh
+
+#GitHub commit message
+
+feat: add experiment 7 Docker image creation and container management
