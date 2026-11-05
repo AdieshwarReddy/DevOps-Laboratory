@@ -1,0 +1,9 @@
+
+chmod +x git_commands.sh
+./git_commands.sh
+
+
+
+python3 main.py
+
+#feat: add experiment 3 Git branching merging and conflict resolution
